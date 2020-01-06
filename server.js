@@ -7,6 +7,10 @@ const HTTP_PORT = process.env.PORT || 8080;
 
 let names = [{Name:"pat",lName:"C"},{Name:"john",lName:"smith"}]
 
+//CRUD OPERATIONS
+
+// 
+
 app.get("/api/names",(req,res)=>{
     res.json(names);
 });
