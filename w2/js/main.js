@@ -14,8 +14,11 @@ $(function(){
        e.preventDefault(); // doesn't refresh the page when you press button
 
        let formData={
-            firstName: $("#data-form [name='fName]").val()
+            firstName: $("#data-form [name='fName']").val(),
+            bio:$("#data-form [name='bio']").val()
        };
+
+       console.log(formData);
    })
 
 
