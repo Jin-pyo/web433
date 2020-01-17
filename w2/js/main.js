@@ -5,7 +5,22 @@ $(function(){
         $(this).css({"background-color":"#eff6f7" });
     });
 
-    $("#data-table tbody").on("click","tr")
+    $("#data-table tbody").on("click","tr",function(e){
+        console.log($(this).attr("_id"));
+    })
+
+
+   $("#data-form").on("submit",function(e){
+       e.preventDefault(); // doesn't refresh the page when you press button
+
+       let formData={
+            firstName: $("#data-form [name='fName]").val()
+       };
+   })
+
+
+
+
 
     $("#table-one tbody").on("click","tr",function(){
         console.log("table row clicked");
