@@ -30,7 +30,7 @@ module.exports = function(connectionString){
                     if(err) {
                         reject(err);
                     } else {
-                        resolve(`new sale ${newSale._id}successfully added`);
+                        resolve(`new sale ${newSale._id} successfully added`);
                     }
                 });
             });
