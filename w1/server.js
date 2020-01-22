@@ -34,7 +34,7 @@ app.put("/api/names/:index",(req,res)=>{
 
 //Delete
 
-app.delete("/api.names/:index",(req,res)=>{
+app.delete("/api/names/:index",(req,res)=>{
     names.splice(req.params.index,1);
 })
 
