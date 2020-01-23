@@ -1,6 +1,4 @@
 
-
-
 $(function(){
     
     $("#data-table tbody tr.highlight").each(function(index){
@@ -21,11 +19,61 @@ $(function(){
         </tr>
     `);
 
+    /*
     $("#data-table tbody tr td").html(`
         <span>New div!</span>
     `)
 
-    $("#data-table tbody tr").empty();
+    */
+
+   $("#data-form").on("submit",function(e){
+    e.preventDefault();
+
+    
+    
+
+    $("#data-form").on("submit",function(e){
+        e.preventDefault();
+
+        let formData={
+            //text
+            firstName: $("#data-form [name='fName']").val(),
+            //textarea
+            bio:$("#data-form [name='bio']").val(),
+            //select
+            food:$("#data-form [name='food']").val(),
+            //checkbox
+            enrolled:$("#data-form [name='enrolled']").prop("checked"),
+            //radio
+            vehicle:$("#data-form [name='vehicle']:checked").val()
+        }
+
+        console.log(formData);
+    })
     
 })
    
+
+
+/*
+
+    let formData={
+        //text
+        firstName: $("#data-form [name='fName']").val(),
+        //textarea
+        bio:$("#data-form [name='bio']").val(),
+        //select
+        food:$("#data-form [name='food']").val(),
+        //checkbox
+        enrolled:$("#data-form [name='enrolled']").prop("checked"),
+        //radio
+        vehicle:$("#data-form [name='vehicle']:checked").val()
+    }
+   
+    $("#data-table tbody tr td").append(`
+        <span>${formData.firstName}</span>
+    `)
+
+    console.log(formData);
+})
+*/

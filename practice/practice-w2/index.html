@@ -11,6 +11,49 @@
 <body>
 
     <div class="container">
+        
+                <form id="data-form">
+                    <br><br><br>
+                    <!-- Text -->
+                    <div class="form-group">
+                        <label>First Name</label><br>
+                        <input type="text" name="fName">
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label>Bio</label><br>
+                        <textarea name="bio" ></textarea>
+                    </div>
+
+                    <!-- select -->
+                    <div class="from-group">
+                        <label>Food</label><br>
+                        <select name="food" >
+                            <option value="P">Pizza</option>
+                            <option value="H">Hamburger</option>
+                            <option value="S">Sushi</option>
+                        </select>
+                    </div>
+
+                    <!-- checkbox -->
+                    <div class="form-group">
+                        <label>Enrolled</label><br>
+                        <input type="checkbox" name="enrolled" >
+                    </div>
+
+                    <!-- radio -->
+                    <div class="from-group">
+                        Car<input type="radio" name="vehicle" value="Car" ><br>
+                        Motorcycle<input type="radio" name="vehicle" value="Motorcycle" ><br>
+                        Boat<input type="radio" name="vehicle" value="Boat" >
+                    </div>
+
+                    <!-- submit button -->
+                    <button type="submit">Submit</button>
+                </form>
+            
+
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-hover" id="data-table">
