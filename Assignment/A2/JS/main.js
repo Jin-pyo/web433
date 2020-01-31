@@ -45,6 +45,8 @@ $(function(){
    
     loadSaleData();
 
+    $("tbody").on("clicked")
+
 });
 
 function loadSaleData(){
