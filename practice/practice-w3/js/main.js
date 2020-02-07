@@ -6,77 +6,62 @@ let users = [
 
 ];
 
-
-const userTemplate=_.template(`
-    <% _.forEach(users,function(user){ %>
-        <tr _id="clicked">
-            <td> <%- user.user %> </td>
-            <td> <%- user.active %> </td>
-            <td> <%- user.age %> </td>
-            <td> <%- moment(user.registred).format('LLLL') %> </td>
-        </tr>    
-    <% }); %> 
-`)
-
-$("#data-table tbody").html(userTemplate(users));
-
-$("tbody tr").on("click","td",function(){
-    console.log("clicked");
-})
-
-
-
-/*
-let template1=_.template('hello <%= user %>');
-let templateResult=template1({'user':users[0].user});
-
-
-let template3 = _.template(`<ul> 
-                                <% _.forEach(users, function(user) { %>
-                                    <li><%- user %></li>
-                                <% }); %>
-                            </ul>`);
-
-let template3Result = template3({ 'users': users }); // => '<ul><li>fred</li><li>barney</li></ul>'
-console.log(template3);
-console.log(template3Result);
-
-const 
-
-/*
-// Array
-//chunk
-let chunk1=_.chunk(['a','b','c','d'],2);
+let chunk1=_.chunk(users,2);
 console.log(chunk1);
 
-let chunk2=_.chunk(users,2);
-console.log(chunk2);
-
-//findIndex
-let x=_.findIndex(users,function(a){
-    return a.active==true;
-})
-console.log(x);
-
-//take
 let take1=_.take(users,2);
 console.log(take1);
 
-//Collection
-//filter
-let filter1=_.filter(users,function(user){
-    return user.user=='wilma';
-});
+let findIndex1=_.findIndex(users,function(e){
+    return e.user=='fred';
+})
+console.log(findIndex1);
+
+let filter1=_.filter(users,function(e){
+    return e.active==true;
+})
 console.log(filter1);
 
-//sort
-let sort1=_.sortBy(users,[function(user){
-    return user.user;
-}])
+let sort1=_.sortBy(users,[
+    function(e){
+        return e.user
+    }
+])
 console.log(sort1);
 
-//forEachRight
-_.forEachRight(users,function(user){
-    console.log(user);
+let each1=[];
+_.forEachRight(users,function(e){
+    each1.push(e.age); 
 })
-*/
+console.log(each1);
+
+let dataTemplate=_.template(`
+    <% _.forEach(users,function(e){ %>
+        <tr>
+            <td> <%- e.user %> </td>
+            <td> <%- e.active %> </td>
+            <td> <%- e.age %> </td>
+            <td> <%- moment(e.registered).format('LLLL') %> </td>
+        </tr>
+   <% }); %>
+`)
+
+
+$(function(){
+
+
+    $("thead").each(function(e){
+        $(this).css({"background-color":"#ffedfe","font-size":"12px"})
+    })
+
+    $("thead").on("click","tr",function(e){
+        console.log($(this).attr("data-id")+"clicked")
+    })
+
+    $("tbody").html(dataTemplate(users));
+
+    $("td").on("click",function(){
+        console.log("clicked");
+    })
+
+})

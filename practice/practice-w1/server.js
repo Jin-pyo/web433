@@ -6,32 +6,61 @@ const HTTP_PORT = process.env.PORT ||8080;
 
 app.use(bodyParser.json());
 
-let names =[{Name:"Jinpyo",lName:"Ju"},{Name:"Jieun",lName:"Kim"}];
+var colours = [ 'Red', 'Green', 'Blue', 'Yellow', 'Aqua', 'Fuschia' ];
 
-
-app.post("/api/names",(req,res)=>{
-    names.push(req.body);
-    res.json({message:"name added!!"});
+app.get("/api/items",(req,res)=>{
+    res.status(201).json(colours);
 })
 
-app.get("/api/names",(req,res)=>{
-    res.json(names);
+app.get("/api/items/:id",(req,res)=>{
+    
+    let index=colours.findIndex(i=>i.toLocaleLowerCase()==req.params.id.toLocaleLowerCase())
+
+    if(index>-1)
+    {
+        res.json(colours[index]);
+    }
+    else{
+        res.status(404).json({message:"can't find"})
+    }
+
+});
+
+app.post("/api/items",(req,res)=>{
+    let index = colours.push(req.body.firsName)-1;
+    res.json(colours[index]);
 })
 
-app.get("/api/names/:id",(req,res)=>{
-    res.json(names[req.params.id]);
+app.put("/api/items/:id",(req,res)=>{
+    if(req.params.id>colours.length-1)
+    {
+        res.status(404).json({message:"can't find"});
+    }
+    else
+    {
+        colours[req.params.id]=req.body.firsName;
+        res.json(colours[req.params.id]);
+    }
 })
 
-app.put("/api/names/:id",(req,res)=>{
-    names[req.params.id]=req.body
-    res.json({message:"name updated!"});
+app.delete("/api/items/:id",(req,res)=>{
+    if(req.params.id>colours.length-1)
+    {
+        res.status(404).json({message:"can't find"});
+    }
+    else
+    {
+        res.splice(req.params.id,1);
+    }
 })
 
-app.delete("/api/names/:id",(req,res)=>{
-    names.splice(req.params.id,1);
-    res.json({message:"name deleted"});
-})
+
+
 
 app.listen(HTTP_PORT,()=>{
     console.log(`serverlog ${HTTP_PORT}`);
 })
+
+
+
+

@@ -30,7 +30,7 @@ module.exports = function(connectionString){
                     if(err) {
                         reject(err);
                     } else {
-                        resolve(`new sale ${newSale._id} successfully added`);
+                        resolve(`new sale: ${newSale._id} successfully added`);
                     }
                 });
             });
@@ -39,7 +39,7 @@ module.exports = function(connectionString){
         getAllSales: function(page, perPage){
             return new Promise((resolve,reject)=>{
                 if(+page && +perPage){
-                        page = (+page==0) ? 1 : (+page)-1;                      
+                        page = (+page) - 1;
                         Sale.find().sort({saleDate: -1}).skip(page * +perPage).limit(+perPage).exec().then(sales=>{
                             resolve(sales)
                         }).catch(err=>{
